@@ -33,10 +33,10 @@ module.exports = {
 	},
 
 	stop: function() {
+    const logger = require("../logger/console_logger.js")
 		const player = module.exports.currentPlayer
-    logger.log("stop received received")
+    logger.log("stop received")
 		if (player != null) {
-      const logger = require("../logger/console_logger.js")
       logger.log("quitting player")
       player.stop()
       player.quit()
