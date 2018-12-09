@@ -6,7 +6,7 @@ module.exports = {
 	player: function() {
 		const omxPlayer = require("node-omxplayer")
 		if (module.exports.currentPlayer == null) {
-			return omxPlayer()
+			module.exports.currentPlayer = omxPlayer()
 		}
 		return module.exports.currentPlayer
 	},
@@ -34,10 +34,12 @@ module.exports = {
 
 	stop: function() {
 		const player = module.exports.currentPlayer
+    logger.log("stop received received")
 		if (player != null) {
       const logger = require("../logger/console_logger.js")
       logger.log("quitting player")
-			player.quit()
+      player.stop()
+      player.quit()
 		}
 	},
 
