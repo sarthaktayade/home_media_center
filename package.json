@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "node-omxplayer": "^0.6.1"
+    "node-omxplayer": "^0.6.1",
+    "socket.io": "^2.2.0"
   }
 }
