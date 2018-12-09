@@ -17,7 +17,7 @@ module.exports = {
 		if (player.running) {
 			player.quit()
 		}
-		player.newSource(urlToPlay)
+		player.newSource(urlToPlay, "hdmi", false, 50)
 		player.on("error", function(err) {
 			logger.log("player encountered error = " + err)
 			if (error != null) {
@@ -38,7 +38,6 @@ module.exports = {
     logger.log("stop received")
 		if (player != null) {
       logger.log("quitting player")
-      player.stop()
       player.quit()
 		}
 	},
