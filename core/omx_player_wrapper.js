@@ -1,3 +1,4 @@
+// https://www.npmjs.com/package/node-omxplayer
 module.exports = {
 
 	currentPlayer: null,

@@ -10,12 +10,22 @@ const youtubePlayer = require("./youtube_player/youtube_player.js")
 io.on("connection", function(socket) {
 	logger.log("socket connection established")
 	socket.on("play", function() {
+		logger.log("play received")
 		youtubePlayer.playYoutubeVideo("https://www.youtube.com/watch?v=IWwMqa-_210")
+	})
+	socket.on("stop", function() {
+		logger.log("stop received")
+		youtubePlayer.stopPlaying()
+	})
+	socket.on("volume_change", function(data) {
+		logger.log("volume change received = " + data)
+		youtubePlayer.changeVolumeUp()
 	})
 })
 
 app.get('/playyoutube', function(req, res) {
 	logger.log("playing")
+
 })
 
 app.get('stopyoutube', function(req, res) {
