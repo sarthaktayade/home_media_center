@@ -1,8 +1,17 @@
 module.exports = {
 
+  playerWrapper: null,
+
+  getPlayerWrapper: function() {
+    if (module.exports.playerWrapper == null) {
+      module.exports.playerWrapper = require("../core/omx_player_wrapper.js")
+    }
+    return module.exports.playerWrapper
+  },
+
   playYoutubeVideo: function(url, completion, error) {
     const urlResolver = require("./youtube_url_resolver.js")
-    const omxPlayer = require("../core/omx_player_wrapper.js")
+    const omxPlayer = module.exports.getPlayerWrapper()
     urlResolver.resolveUrl(url, function(resolvedUrl) {
       omxPlayer.start(resolvedUrl)
     }, function() {
@@ -11,17 +20,17 @@ module.exports = {
   },
 
   stopPlaying: function() {
-    const omxPlayer = require("./core/omx_player_wrapper.js")
+    const omxPlayer = module.exports.getPlayerWrapper()
     omxPlayer.stop()
-  }
+  },
 
   changeVolumeUp: function(volume) {
-    const omxPlayer = require("./core/omx_player_wrapper.js")
-    omxPlayer.volUp()
-  }
+    const omxPlayer = module.exports.getPlayerWrapper()
+    omxPlayer.volumeUp()
+  },
 
   changeVolumeDown: function(volume) {
-    const omxPlayer = require("./core/omx_player_wrapper.js")
-    omxPlayer.volDown()
+    const omxPlayer = module.exports.getPlayerWrapper()
+    omxPlayer.volumeDown()
   }
 }

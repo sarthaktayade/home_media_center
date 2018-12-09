@@ -17,9 +17,14 @@ io.on("connection", function(socket) {
 		logger.log("stop received")
 		youtubePlayer.stopPlaying()
 	})
-	socket.on("volume_change", function(data) {
+	socket.on("volume_up", function(data) {
 		logger.log("volume change received = " + data)
 		youtubePlayer.changeVolumeUp()
+	})
+
+	socket.on("volume_down", function(data) {
+		logger.log("volume change received = " + data)
+		youtubePlayer.changeVolumeDown()
 	})
 })
 

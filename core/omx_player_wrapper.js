@@ -39,5 +39,20 @@ module.exports = {
       logger.log("quitting player")
 			player.quit()
 		}
-	}
+	},
+
+  volumeUp: function() {
+    const player = module.exports.currentPlayer
+    if (player != null) {
+      player.volUp()
+    }
+  },
+
+  volumeDown: function() {
+    const player = module.exports.currentPlayer
+    if (player != null) {
+      player.volDown()
+    }
+  }
+
 }
