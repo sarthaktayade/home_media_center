@@ -9,9 +9,14 @@ const youtubePlayer = require("./youtube_player/youtube_player.js")
 
 io.on("connection", function(socket) {
 	logger.log("socket connection established")
-	socket.on("play", function() {
-		logger.log("play received")
-		youtubePlayer.playYoutubeVideo("https://www.youtube.com/watch?v=IWwMqa-_210")
+	socket.on("play", function(data) {
+		logger.log("play receivedn - " + data.url)
+		if (data.url == null) {
+			youtubePlayer.playYoutubeVideo("https://www.youtube.com/watch?v=IWwMqa-_210")
+		} else {
+			youtubePlayer.playYoutubeVideo(data.url)
+		}
+
 	})
 	socket.on("stop", function() {
 		logger.log("stop received")
